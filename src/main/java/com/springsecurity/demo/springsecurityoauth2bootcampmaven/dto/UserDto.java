@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserDto {
 
-   // private long userId;
+    private long userId;
     private String firstName;
     private String middleName;
     private String lastName;

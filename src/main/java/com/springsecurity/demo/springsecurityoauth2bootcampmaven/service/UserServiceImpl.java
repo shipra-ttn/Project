@@ -14,18 +14,17 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    UserRepository userRepository;
+    RoleRepository roleRepository;
+    PasswordEncoder passwordEncoder;
     @Override
     public void saveUser(UserDto userDto) {
-
-
-        UserRepository userRepository;
-       RoleRepository roleRepository;
-       PasswordEncoder passwordEncoder = null;
 
         User user = new User();
         user.setName(userDto.getFirstName() + " " + userDto.getMiddleName()+" "+userDto.getLastName());
         user.setEmailId(userDto.getEmail());
-        // encrypt the password using spring security
+
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
         Role role = roleRepository.findByName("ROLE_ADMIN");
